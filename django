@@ -1,2 +1,14 @@
-Installation
+#Installation
 pip install django
+#Creating a project¶
+django-admin startproject mysite
+cd mysite
+python manage.py runserver
+# In browser type http://localhost:8000/
+#Changing the port
+ python manage.py runserver 8081
+
+
+
+
+
