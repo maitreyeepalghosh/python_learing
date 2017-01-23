@@ -1,0 +1,377 @@
+In Python, function is a group of related statements that perform a specific task.
+Functions help break our program into smaller and modular chunks. 
+As our program grows larger and larger, functions make it more organized and manageable.
+Furthermore, it avoids repetition and makes code reusable.
+
+Syntax of Function
+def function_name(parameters):
+	"""docstring"""
+	statement(s)
+
+Above shown is a function definition which consists of following components.
+Keyword def marks the start of function header.
+A function name to uniquely identify it.
+Parameters (arguments) through which we pass values to a function. They are optional.
+A colon (:) to mark the end of function header.
+Optional documentation string (docstring) to describe what the function does.
+One or more valid python statements that make up the function body. 
+Statements must have same indentation level (usually 4 spaces).
+An optional return statement to return a value from the function.
+
+Example of a function
+def greet(name):
+	"""This function greets to
+	the person passed in as
+	parameter"""
+	print("Hello, " + name + ". Good morning!")
+  
+ Function Call
+Once we have defined a function, we can call it from another function, program or even the Python prompt. To call a function we simply type the function name with appropriate parameters.
+>>> greet('Paul')
+Hello, Paul. Good morning!
+	
+The return statement
+The return statement is used to exit a function and go back to the place from where it was called.
+
+Syntax of return
+return [expression_list]
+This statement can contain expression which gets evaluated and the value is returned. If there is no expression in the statement or the return statement itself is not present inside a function, then the function will return the None object.
+
+For example:
+
+>>> print(greet("May"))
+Hello, May. Good morning!
+None
+Here, None is the returned value.  
+
+Example of return
+def absolute_value(num):
+	"""This function returns the absolute
+	value of the entered number"""
+
+	if num >= 0:
+		return num
+	else:
+		return -num
+
+# Output: 2
+print(absolute_value(2))
+
+# Output: 4
+print(absolute_value(-4))
+
+
+Scope and Lifetime of variables
+Scope of a variable is the portion of a program where the variable is recognized. Parameters and variables defined inside a function is not visible from outside. Hence, they have a local scope.
+
+Lifetime of a variable is the period throughout which the variable exits in the memory. The lifetime of variables inside a function is as long as the function executes.
+
+They are destroyed once we return from the function. Hence, a function does not remember the value of a variable from its previous calls.
+
+Here is an example to illustrate the scope of a variable inside a function.
+
+def my_func():
+	x = 10
+	print("Value inside function:",x)
+
+x = 20
+my_func()
+print("Value outside function:",x)
+
+Output
+
+Value inside function: 10
+Value outside function: 20
+	
+ Types of Functions
+Basically, we can divide functions into the following two types:
+
+Built-in functions - Functions that are built into Python.
+User-defined functions - Functions defined by the users themselves.
+
+Python Function Arguments
+
+def greet(name,msg):
+   """This function greets to
+   the person with the provided message"""
+   print("Hello",name + ', ' + msg)
+
+greet("Monica","Good morning!")
+
+Output
+
+Hello Monica, Good morning!
+Here, the function greet() has two parameters.
+
+Since, we have called this function with two arguments, it runs smoothly and we do not get any error.
+
+If we call it with different number of arguments, the interpreter will complain. Below is a call to this function with one and no arguments along with their respective error messages.
+
+>>> greet("Monica")    # only one argument
+TypeError: greet() missing 1 required positional argument: 'msg'
+
+>>> greet()    # no arguments
+TypeError: greet() missing 2 required positional arguments: 'name' and 'msg'
+
+Variable Function Arguments
+
+Up until now functions had fixed number of arguments. In Python there are other ways to define a function which can take variable number of arguments.
+
+Three different forms of this type are described below.
+
+Python Default Arguments
+Function arguments can have default values in Python.
+
+We can provide a default value to an argument by using the assignment operator (=). Here is an example.
+
+def greet(name, msg = "Good morning!"):
+   """
+   This function greets to
+   the person with the
+   provided message.
+
+   If message is not provided,
+   it defaults to "Good
+   morning!"
+   """
+
+   print("Hello",name + ', ' + msg)
+
+greet("Kate")
+greet("Bruce","How do you do?")
+
+In this function, the parameter name does not have a default value and is required (mandatory) during a call.
+
+On the other hand, the parameter msg has a default value of "Good morning!". So, it is optional during a call. If a value is provided, it will overwrite the default value.
+
+Any number of arguments in a function can have a default value. But once we have a default argument, all the arguments to its right must also have default values.
+
+This means to say, non-default arguments cannot follow default arguments. For example, if we had defined the function header above as:
+
+def greet(msg = "Good morning!", name):
+
+We would get an error as:
+
+SyntaxError: non-default argument follows default argument
+Python Keyword Arguments
+When we call a function with some values, these values get assigned to the arguments according to their position.
+
+For example, in the above function greet(), when we called it as greet("Bruce","How do you do?"), the value "Bruce" gets assigned to the argument name and similarly "How do you do?" to msg.
+
+Python allows functions to be called using keyword arguments. When we call functions in this way, the order (position) of the arguments can be changed. Following calls to the above function are all valid and produce the same result.
+
+>>> # 2 keyword arguments
+>>> greet(name = "Bruce",msg = "How do you do?")
+
+>>> # 2 keyword arguments (out of order)
+>>> greet(msg = "How do you do?",name = "Bruce") 
+
+>>> # 1 positional, 1 keyword argument
+>>> greet("Bruce",msg = "How do you do?")     
+
+Python Arbitrary Arguments
+
+Sometimes, we do not know in advance the number of arguments that will be passed into a function.Python allows us to handle this kind of situation through function calls with arbitrary number of arguments.
+
+In the function definition we use an asterisk (*) before the parameter name to denote this kind of argument. Here is an example.
+def greet(*names):
+   """This function greets all
+   the person in the names tuple."""
+
+   # names is a tuple with arguments
+   for name in names:
+       print("Hello",name)
+
+greet("Monica","Luke","Steve","John")
+
+Output
+
+Hello Monica
+Hello Luke
+Hello Steve
+Hello John
+
+Python Recursion
+
+Python Recursive Function
+We know that in Python, a function can call other functions. It is even possible for the function to call itself. These type of construct are termed as recursive functions.
+
+Following is an example of recursive function to find the factorial of an integer.
+
+Factorial of a number is the product of all the integers from 1 to that number. For example, the factorial of 6 (denoted as 6!) is 1*2*3*4*5*6 = 720.
+# An example of a recursive function to
+# find the factorial of a number
+
+def calc_factorial(x):
+    """This is a recursive function
+    to find the factorial of an integer"""
+
+    if x == 1:
+        return 1
+    else:
+        return (x * calc_factorial(x-1))
+
+num = 4
+print("The factorial of", num, "is", calc_factorial(num))		
+
+Python Anonymous/Lambda Function
+
+
+While normal functions are defined using the def keyword, in Python anonymous functions are defined using the lambda keyword.
+
+Hence, anonymous functions are also called lambda functions.
+
+Lambda Functions
+A lambda function has the following syntax.
+
+Syntax of Lambda Function
+lambda arguments: expression
+Lambda functions can have any number of arguments but only one expression. The expression is evaluated and returned. Lambda functions can be used wherever function objects are required.
+
+Example of Lambda Function
+Here is an example of lambda function that doubles the input value.
+# Program to show the
+# use of lambda functions
+
+double = lambda x: x * 2
+
+# Output: 10
+print(double(5))
+
+In the above program, lambda x: x * 2 is the lambda function. Here x is the argument and x * 2 is the expression that gets evaluated and returned.
+
+This function has no name. It returns a function object which is assigned to the identifier double. We can now call it as a normal function. The statement
+
+double = lambda x: x * 2
+is nearly the same as
+
+def double(x):
+   return x * 2
+Use of Lambda Function
+We use lambda functions when we require a nameless function for a short period of time.
+
+In Python, we generally use it as an argument to a higher-order function (a function that takes in other functions as arguments). Lambda functions are used along with built-in functions like filter(), map() etc.
+
+Example use with filter()
+The filter() function in Python takes in a function and a list as arguments.
+
+The function is called with all the items in the list and a new list is returned which contains items for which the function evaluats to True.
+
+Here is an example use of filter() function to filter out only even numbers from a list.
+
+# Program to filter out
+# only the even items from
+# a list using filter() and
+# lambda functions
+
+my_list = [1, 5, 4, 6, 8, 11, 3, 12]
+
+new_list = list(filter(lambda x: (x%2 == 0) , my_list))
+
+# Output: [4, 6, 8, 12]
+print(new_list)
+
+Example use with map()
+The map() function in Python takes in a function and a list.
+
+The function is called with all the items in the list and a new list is returned which contains items returned by that function for each item.
+
+Here is an example use of map() function to double all the items in a list.
+
+# Program to double each
+# item in a list using map() and
+# lambda functions
+
+my_list = [1, 5, 4, 6, 8, 11, 3, 12]
+
+new_list = list(map(lambda x: x * 2 , my_list))
+
+# Output: [2, 10, 8, 12, 16, 22, 6, 24]
+print(new_list)
+
+Python Modules
+
+Modules refer to a file containing Python statements and definitions.
+
+A file containing Python code, for e.g.: example.py, is called a module and its module name would be example.
+
+We use modules to break down large programs into small manageable and organized files. Furthermore, modules provide reusability of code.
+
+We can define our most used functions in a module and import it, instead of copying their definitions into different programs.
+
+Let us create a module. Type the following and save it as example.py.
+# Python Module example
+
+def add(a, b):
+   """This program adds two
+   numbers and return the result"""
+
+   result = a + b
+   return result
+   
+   
+Here, we have defined a function add() inside a module named example. The function takes in two numbers and returns their sum.
+
+How to import modules in Python?
+We can import the definitions inside a module to another module or the interactive interpreter in Python.
+
+We use the import keyword to do this. To import our previously defined module example we type the following in the Python prompt.
+
+>>> import example
+This does not enter the names of the functions defined in example directly in the current symbol table. It only enters the module name example there.
+
+Using the module name we can access the function using dot (.) operation. For example:
+
+>>> example.add(4,5.5)
+9.5
+
+Python import statement
+
+# import statement example
+# to import standard module math
+
+import math
+print("The value of pi is", math.pi)
+
+Import with renaming
+
+We can import a module by renaming it as follows.
+
+# import module by renaming it
+
+import math as m
+print("The value of pi is", m.pi)
+
+Python from...import statement
+
+We can import specific names form a module without importing the module as a whole. Here is an example.
+# import only pi from math module
+
+from math import pi
+print("The value of pi is", pi)
+
+We imported only the attribute pi form the module.
+
+In such case we don't use the dot operator. We could have imported multiple attributes as follows.
+
+>>> from math import pi, e
+>>> pi
+3.141592653589793
+>>> e
+2.718281828459045
+
+Import all names
+We can import all names(definitions) form a module using the following construct.
+# import all names form
+# the standard module math
+
+from math import *
+print("The value of pi is", pi)
+
+
+
+
+
+
+
+
