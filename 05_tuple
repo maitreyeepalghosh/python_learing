@@ -1,0 +1,89 @@
+Creating a Tuple
+A tuple is created by placing all the items (elements) inside a parentheses (), separated by comma. The parentheses are optional but is a good practice to write it.
+A tuple can have any number of items and they may be of different types (integer, float, list, string etc.).
+# empty tuple
+# Output: ()
+my_tuple = ()
+print(my_tuple)
+# tuple having integers
+# Output: (1, 2, 3)
+my_tuple = (1, 2, 3)
+print(my_tuple)
+# tuple with mixed datatypes
+# Output: (1, "Hello", 3.4)
+my_tuple = (1, "Hello", 3.4)
+print(my_tuple)
+# nested tuple
+# Output: ("mouse", [8, 4, 6], (1, 2, 3))
+my_tuple = ("mouse", [8, 4, 6], (1, 2, 3))
+print(my_tuple)
+# tuple can be created without parentheses
+# also called tuple packing
+# Output: 3, 4.6, "dog"
+my_tuple = 3, 4.6, "dog"
+print(my_tuple)
+# tuple unpacking is also possible
+# Output:
+# 3
+# 4.6
+# dog
+a, b, c = my_tuple
+print(a)
+print(b)
+print(c)
+
+Creating a tuple with one element is a bit tricky.
+Having one element within parentheses is not enough. We will need a trailing comma to indicate that it is in fact a tuple.
+# only parentheses is not enough
+# Output: <class 'str'>
+my_tuple = ("hello")
+print(type(my_tuple))
+# need a comma at the end
+# Output: <class 'tuple'>
+my_tuple = ("hello",)  
+print(type(my_tuple))
+# parentheses is optional
+# Output: <class 'tuple'>
+my_tuple = "hello",
+print(type(my_tuple))
+
+Accessing Elements in a Tuple
+There are various ways in which we can access the elements of a tuple.
+1. Indexing
+We can use the index operator [] to access an item in a tuple where the index starts from 0.
+So, a tuple having 6 elements will have index from 0 to 5. Trying to access an element other that (6, 7,...) will raise an IndexError.
+The index must be an integer, so we cannot use float or other types. This will result into TypeError.
+Likewise, nested tuple are accessed using nested indexing, as shown in the example below.
+my_tuple = ['p','e','r','m','i','t']
+# Output: 'p'
+print(my_tuple[0])
+# Output: 't'
+print(my_tuple[5])
+# index must be in range
+# If you uncomment line 14,
+# you will get an error.
+# IndexError: list index out of range
+#print(my_tuple[6])
+# index must be an integer
+# If you uncomment line 21,
+# you will get an error.
+# TypeError: list indices must be integers, not float
+#my_tuple[2.0]
+# nested tuple
+n_tuple = ("mouse", [8, 4, 6], (1, 2, 3))
+# nested index
+# Output: 's'
+print(n_tuple[0][3])
+# nested index
+# Output: 4
+print(n_tuple[1][1])
+
+2. Negative Indexing
+Python allows negative indexing for its sequences.
+
+The index of -1 refers to the last item, -2 to the second last item and so on.
+my_tuple = ['p','e','r','m','i','t']
+# Output: 't'
+print(my_tuple[-1])
+# Output: 'p'
+print(my_tuple[-6])
