@@ -60,8 +60,27 @@ print "Read String is : ", str
 # Close opend file
 fo.close()
 
+test.txt
+I am a test file.
+Maybe someday, he will promote me to a real file.
+Man, I long to be a real file
+and hang out with all my new real file friends.
+
+f = open("test.txt","r") #opens file with name of "test.txt"
+print(f.read(1))
+print(f.read())
 
 
+print(f.readline())
+print(f.readline())
+
+f = open("test.txt","r") #opens file with name of "test.txt"
+myList = []
+
+for line in f:
+  myList.append(line)
+
+print(myList)
 
 
 
