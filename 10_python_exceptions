@@ -1,0 +1,100 @@
+An exception is an event, which occurs during the execution of a program that disrupts the normal flow of the program's instructions. 
+In general, when a Python script encounters a situation that it cannot cope with, it raises an exception. 
+An exception is a Python object that represents an error.
+
+When a Python script raises an exception, it must either handle the exception immediately otherwise it terminates and quits.
+
+Handling an exception
+If you have some suspicious code that may raise an exception, you can defend your program by placing the suspicious code in a try: block. 
+After the try: block, include an except: statement, 
+followed by a block of code which handles the problem as elegantly as possible.
+
+n = int(raw_input("Please enter a number: "))
+Please enter a number: 23.5
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: '23.5'
+
+With the aid of exception handling, we can write robust code for reading an integer from input:
+while True:
+    try:
+        n = raw_input("Please enter an integer: ")
+        n = int(n)
+        break
+    except ValueError:
+        print("No valid integer! Please try again ...")
+print "Great, you successfully entered an integer!"
+
+
+Syntax
+Here is simple syntax of try....except...else blocks −
+
+try:
+   You do your operations here;
+   ......................
+except ExceptionI:
+   If there is ExceptionI, then execute this block.
+except ExceptionII:
+   If there is ExceptionII, then execute this block.
+   ......................
+else:
+   If there is no exception then execute this block. 
+   
+ 
+Example
+
+try:
+   fh = open("testfile", "w")
+   fh.write("This is my test file for exception handling!!")
+except IOError:
+   print "Error: can\'t find file or read data"
+else:
+   print "Written content in the file successfully"
+   fh.close()
+
+#Written content in the file successfully
+
+
+Example
+This example tries to open a file where you do not have write permission, so it raises an exception −
+
+#!/usr/bin/python
+
+try:
+   fh = open("testfile", "r")
+   fh.write("This is my test file for exception handling!!")
+except IOError:
+   print "Error: can\'t find file or read data"
+else:
+   print "Written content in the file successfully"
+
+This produces the following result −
+
+Error: can't find file or read data
+
+The try-finally Clause
+
+try:
+   fh = open("testfile", "w")
+   fh.write("This is my test file for exception handling!!")
+finally:
+   print "Error: can\'t find file or read data"
+   
+If you do not have permission to open the file in writing mode, then this will produce the following result:
+
+Error: can't find file or read data
+
+Same example can be written more cleanly as follows −
+
+try:
+   fh = open("testfile", "w")
+   try:
+      fh.write("This is my test file for exception handling!!")
+   finally:
+      print "Going to close the file"
+      fh.close()
+except IOError:
+   print "Error: can\'t find file or read data"
+When an exception is thrown in the try block, the execution immediately passes to the finally block. After all the statements in the finally block are executed, the exception is raised again and is handled in the except statements if present in the next higher layer of the try-except statement.
+
+
