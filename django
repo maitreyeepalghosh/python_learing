@@ -9,6 +9,8 @@ python manage.py runserver
  python manage.py runserver 8081
 python manage.py startapp polls
 
+https://docs.djangoproject.com/en/1.10/intro/tutorial01/
+
 https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-ubuntu-14-04
 
 
